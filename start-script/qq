@@ -2,6 +2,8 @@
 set -x
 set -eo pipefail
 
+xhost +
+
 xfsettingsd &
 docker container stop qq || true
 docker container rm qq || true

@@ -2,6 +2,8 @@
 set -x
 set -eo pipefail
 
+xhost +
+
 xfsettingsd &
 docker container stop wechat || true
 docker container rm wechat || true
