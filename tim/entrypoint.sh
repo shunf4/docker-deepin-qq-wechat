@@ -24,8 +24,9 @@ REGEDIT4
 "LogPixels"=dword:$REGDPI
 EOF
 
-sed -i '258 ienv WINEPREFIX=/home/qq/.deepinwine/Deepin-$APP deepin-wine regedit /home/qq/dpi.reg' "/opt/deepinwine/tools/run_v2.sh"
-sed -i '277 ienv WINEPREFIX=/home/qq/.deepinwine/Deepin-$APP deepin-wine regedit /home/qq/dpi.reg' "/opt/deepinwine/tools/run_v2.sh"
+sed -i '307 ienv WINEPREFIX=/home/qq/.deepinwine/Deepin-$APP deepin-wine regedit /home/qq/dpi.reg' "/opt/deepinwine/tools/run.sh"
+sed -i '333 ienv WINEPREFIX=/home/qq/.deepinwine/Deepin-$APP deepin-wine regedit /home/qq/dpi.reg' "/opt/deepinwine/tools/run.sh"
+sed -i '290 ienv WINEPREFIX=/home/qq/.deepinwine/Deepin-$APP deepin-wine regedit /home/qq/dpi.reg' "/opt/deepinwine/tools/run_v2.sh"
 
 su qq <<EOF
    echo "启动 $APP"

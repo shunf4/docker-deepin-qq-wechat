@@ -5,13 +5,15 @@ set -eo pipefail
 xhost +
 
 xfsettingsd &
-docker container rm -f wechat || true
-docker container run --rm -d --name wechat \
+# docker container stop qq || true
+docker container rm -f qq || true
+docker container run --rm -d --name qq \
     --device /dev/snd \
+    --ipc="host" \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
+    --privileged \
     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native \
-    -v $HOME:$HOME \
-    -v $HOME/WeChatFiles:/WeChatFiles \
+    -v $HOME/TencentFiles:/TencentFiles \
     -e DISPLAY=unix$DISPLAY \
     -e XMODIFIERS=@im=fcitx \
     -e QT_IM_MODULE=fcitx \
@@ -20,6 +22,6 @@ docker container run --rm -d --name wechat \
     -e VIDEO_GID=`getent group video | cut -d: -f3` \
     -e GID=`id -g` \
     -e UID=`id -u` \
-	-e DPI=135 \
-    shunf4/wechat
+	-e DPI=144 \
+    shunf4/tim
 

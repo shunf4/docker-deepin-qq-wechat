@@ -5,13 +5,14 @@ set -eo pipefail
 xhost +
 
 xfsettingsd &
-docker container stop qq || true
-docker container rm qq || true
+# docker container stop qq || true
+docker container rm -f qq || true
 docker container run --rm -d --name qq \
     --device /dev/snd \
+    --ipc="host" \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
+    --privileged \
     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native \
-    -v $HOME:$HOME \
     -v $HOME/TencentFiles:/TencentFiles \
     -e DISPLAY=unix$DISPLAY \
     -e XMODIFIERS=@im=fcitx \
@@ -21,6 +22,6 @@ docker container run --rm -d --name qq \
     -e VIDEO_GID=`getent group video | cut -d: -f3` \
     -e GID=`id -g` \
     -e UID=`id -u` \
-	-e DPI=120 \
+	-e DPI=144 \
     hoking007/qq
 
