@@ -1,0 +1,12 @@
+#!/bin/bash
+set -x
+set -eo pipefail
+
+DIR=$( cd "$(dirname "$0")"; pwd -P )
+
+"$DIR"/tim
+
+docker exec -it qq bash /update.sh
+
+"$DIR"/tim
+
